@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+	<!-- Header -->
+	<BorderPane>
+		<top>
+			<VBox spacing="20">
+				<JFXToolbar>
+					<leftItems>						
+						<Label fx:id="mainMenuLabel">Data Generator</Label>
+					</leftItems>
+					<rightItems>						
+					</rightItems>
+				</JFXToolbar>
+			</VBox>
+		</top>
+		<!-- Content Area -->		
+      <center>
+         <AnchorPane BorderPane.alignment="CENTER">            
+            <children>
+               <VBox prefHeight="160.0" prefWidth="154.0" spacing="35.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                  <children>
+                     <HBox spacing="10.0" visible="false">
+                        <children>
+                           <JFXCheckBox fx:id="headerCheckBox" text="Header">
+                              <HBox.margin>
+                                 <Insets />
+                              </HBox.margin>
+                           </JFXCheckBox>
+                           <JFXCheckBox fx:id="footerCheckBox" text="Footer" />
+                        </children>                        
+                     </HBox>
+                     <JFXTextField fx:id="delimiterTextField" labelFloat="true" promptText="Delimiter" />
+                     <JFXTextField fx:id="linesTextField" labelFloat="true" promptText="Number of lines" />                     
+                  </children>                  
+               </VBox>  
+               
+               <JFXTreeTableView fx:id="fakeColumnsView" editable="true" layoutX="25.0" layoutY="276.0" showRoot="false" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="200.0">
+                  <columns>
+	            	  <JFXTreeTableColumn fx:id="columnName" text="Column Name" />
+	                  <JFXTreeTableColumn fx:id="fakeType" text="Data Category" />
+	              </columns>
+                  </JFXTreeTableView>
+               <HBox maxHeight="30.0" minHeight="30.0" prefHeight="79.0" prefWidth="650.0" spacing="20.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
+                  <children>
+                     <JFXTextField fx:id="columnNameInputTextField" labelFloat="true" minHeight="35.0" minWidth="125.0" prefColumnCount="0" prefWidth="125.0" promptText="Column name" />
+                     <JFXComboBox fx:id="typeDataInputBox" minWidth="200.0" promptText="Data Category">
+                        <HBox.margin>
+                           <Insets top="10.0" />
+                        </HBox.margin>
+                     </JFXComboBox>
+                     <JFXButton fx:id="addButton" buttonType="RAISED" disable="true" minHeight="35.0" minWidth="100.0" prefWidth="100.0" style="-fx-text-fill:WHITE;-fx-background-color:#4CAF50;-fx-font-size:14px;" text="ADD +" />
+                     <JFXButton fx:id="removeButton" buttonType="RAISED" disable="true" minHeight="35.0" minWidth="100.0" prefWidth="100.0" style="-fx-text-fill:WHITE;-fx-background-color:#f44336;-fx-font-size:14px;" text="REMOVE -">
+                        <HBox.margin>
+                           <Insets />
+                        </HBox.margin></JFXButton>
+                  </children>
+               </HBox>
+               <VBox layoutX="559.0" layoutY="685.0" spacing="25.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+                  <children>
+                     <JFXComboBox fx:id="languageChoiceBox" minWidth="90.0" promptText="Language" /> 
+                     <JFXButton fx:id="generateButton" buttonType="RAISED" minHeight="30.0" minWidth="100.0" prefWidth="100.0" style="-fx-text-fill:WHITE;-fx-background-color:#5264AE;-fx-font-size:14px;" text="GENERATE" />
+                  </children>
+               </VBox>
+               <Label fx:id="statusLabel" layoutX="336.0" layoutY="745.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="336.0" />
+               <Label fx:id="statusLabel" layoutX="221.0" layoutY="732.0" prefHeight="17.0" prefWidth="300.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="160.0" />
+               <ProgressBar fx:id="progressBar" layoutX="221.0" layoutY="751.0" prefHeight="18.0" prefWidth="300.0" progress="0.0" visible="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="160.0" />               
+            </children>
+         </AnchorPane>
+      </center>		
+	</BorderPane>
+</StackPane>
