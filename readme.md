@@ -1,3 +1,6 @@
+[![Coverage Status](https://coveralls.io/repos/github/mierasmade/extract-data-tool/badge.svg?branch=master)](https://coveralls.io/github/mierasmade/extract-data-tool?branch=master)
+[![Build Status](https://travis-ci.org/mierasmade/data-generator.svg?branch=master)](https://travis-ci.org/mierasmade/data-generator)
+
 # Data Generator 0.0.1
 
 ## Introduction and use case
