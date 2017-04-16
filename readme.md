@@ -3,6 +3,9 @@
 
 # Data Generator 0.0.1
 
+## Current bug
+* the amount of lines provided by the user does not match with the amount of lines with the output, this seems to be a threading issue with the future task implementation
+
 ## Introduction and use case
 
 This application provides an easy way to generate fake data. There are some sites on the internet that provide free fake data, but whenever you need alot of fake data you either have to pay for it, or the same data is replicated alot and loses its uniqueness.
