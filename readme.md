@@ -14,7 +14,7 @@ The application creates an .csv file that you can open in excel (the app prefixe
 
 ## How to run
 
-Download the executable jar [here](https://github.com/mierasmade/data-generator/raw/master/data-generator-1.0.0.jar) and just open the app!
+Download the executable jar [here](https://github.com/mierasmade/data-generator/raw/master/data-generator-0.0.1.jar) and just open the app!
 
 ## 0.0.2 Future Features
 
