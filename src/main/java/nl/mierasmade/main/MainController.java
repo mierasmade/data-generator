@@ -64,7 +64,7 @@ public class MainController {
     @FXML private JFXButton addButton;
     @FXML private JFXButton removeButton;
     @FXML private JFXButton generateButton;
-    @FXML private JFXComboBox<Locales> languageChoiceBox;  
+    @FXML private JFXComboBox<Locales> languageChoiceBox;
     @FXML private Label statusLabel;   
     @FXML private ProgressBar progressBar;
     
