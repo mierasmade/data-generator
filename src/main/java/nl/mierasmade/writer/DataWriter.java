@@ -49,11 +49,10 @@ public class DataWriter extends Task<Integer> {
 		int totalPercentage = 0;
 		int percentageIndex = (count / 1000);		
 		
-		try (OutputStream os = new FileOutputStream(file)){			
+		try (OutputStream os = new FileOutputStream(file); BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8))){			
 			os.write(239);
 		    os.write(187);
-		    os.write(191);
-			BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, StandardCharsets.UTF_8));
+		    os.write(191);			
 			int currentIndex = 0;
 			for (int i = 0; i < count; i++) {	
 				String[] fakeValues = getFakeValues(columns, faker);
@@ -66,9 +65,7 @@ public class DataWriter extends Task<Integer> {
 					updateProgress(totalPercentage, 1000);					
 					currentIndex = 0;
 				}
-			}
-			writer.flush();
-			writer.close();
+			}			
 		} catch (IOException e) {						
 			e.printStackTrace();
 		}		
