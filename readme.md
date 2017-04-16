@@ -7,8 +7,6 @@
 
 This application provides an easy way to generate fake data. There are some sites on the internet that provide free fake data, but whenever you need alot of fake data you either have to pay for it, or the same data is replicated alot and loses its uniqueness.
 
-The application creates an .csv file that you can open in excel (the app prefixes the file with a file byte order mark).
-
 ## How to run
 
 Download the executable jar [here](https://github.com/mierasmade/data-generator/raw/master/data-generator-0.0.1.jar) and just open the app!

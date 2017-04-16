@@ -224,7 +224,7 @@ public class MainController {
 			dataWriter.setColumns(localColumns);
 			dataWriter.setCount(Integer.valueOf(linesTextField.getText()));
 			dataWriter.setFile(file);
-			dataWriter.setDelimiter(delimiterTextField.getText());			
+			dataWriter.setDelimiter(delimiterTextField.getText().charAt(0));			
 			
 			progressBar.progressProperty().bind(dataWriter.progressProperty());
 			progressBar.progressProperty().addListener((observable, oldValue, newValue) -> {

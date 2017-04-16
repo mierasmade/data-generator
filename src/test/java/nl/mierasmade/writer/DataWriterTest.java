@@ -52,8 +52,8 @@ public class DataWriterTest {
 	
 	@Test
 	public void call_Valid_args() throws Exception {
-		dataWriter.setLanguage(Locale.ENGLISH);
-		dataWriter.setDelimiter(";");
+		dataWriter.setLanguage(Locale.GERMAN);
+		dataWriter.setDelimiter(';');
 		dataWriter.setCount(1000);			
 		List<FakerValue> columns = new ArrayList<FakerValue>();
 		for (FakerValue fakerValue : fakers.getFakerValues()) {
