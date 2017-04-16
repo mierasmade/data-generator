@@ -23,8 +23,10 @@ import java.util.Locale;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.batch.test.AssertFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javafx.embed.swing.JFXPanel;
@@ -63,7 +65,7 @@ public class DataWriterTest {
 		dataWriter.call();	
 		
 		// Test line count
-		//AssertFile.assertLineCount(1000, new FileSystemResource(ACTUAL_ADDRESS_FILE));		
+		AssertFile.assertLineCount(1000, new FileSystemResource(ACTUAL_ADDRESS_FILE));		
 	
 		// Test uniqueness
 		//AssertFile.assertFileEquals(new FileSystemResource(ACTUAL_ADDRESS_FILE), new FileSystemResource(EXPECTED_ADDRESS_FILE));

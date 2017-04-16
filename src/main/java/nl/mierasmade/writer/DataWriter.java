@@ -66,7 +66,9 @@ public class DataWriter extends Task<Integer> {
 					updateProgress(totalPercentage, 1000);					
 					currentIndex = 0;
 				}
-			}			
+			}
+			writer.flush();
+			writer.close();
 		} catch (IOException e) {						
 			e.printStackTrace();
 		}		
