@@ -52,6 +52,6 @@ public class GuiApplicationTest extends ApplicationTest {
 	
 	@Test
 	public void something() {
-		//clickOn("#delimiterTextField").write("|").closeCurrentWindow();
+		// TODO
 	}
 }
