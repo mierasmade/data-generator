@@ -225,19 +225,7 @@ public class MainController {
 			dataWriter.setCount(Integer.valueOf(linesTextField.getText()));
 			dataWriter.setFile(file);
 			dataWriter.setDelimiter(delimiterTextField.getText().charAt(0));			
-			
-			progressBar.progressProperty().bind(dataWriter.progressProperty());
-			progressBar.progressProperty().addListener((observable, oldValue, newValue) -> {
-				if (newValue.doubleValue() == 1) {
-					statusLabel.setText("Complete");	
-					statusLabel.setTextFill(Color.GREEN);					
-				} else {
-					statusLabel.setText("Creating fake data");	
-					statusLabel.setTextFill(Color.ORANGE);					
-				};
-			});				
-			
-			new Thread(dataWriter).start();			
+			dataWriter.write();
 		});		
 	}
 }

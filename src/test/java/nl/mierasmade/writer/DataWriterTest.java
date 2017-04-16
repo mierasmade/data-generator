@@ -62,7 +62,7 @@ public class DataWriterTest {
 		dataWriter.setColumns(columns);
 		dataWriter.setFile(new File(ACTUAL_ADDRESS_FILE));	
 		
-		dataWriter.call();	
+		dataWriter.write();	
 		
 		// Test line count
 		AssertFile.assertLineCount(1000, new FileSystemResource(ACTUAL_ADDRESS_FILE));		

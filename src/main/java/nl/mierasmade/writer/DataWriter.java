@@ -17,6 +17,7 @@ package nl.mierasmade.writer;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,11 +26,10 @@ import org.springframework.stereotype.Component;
 import com.github.javafaker.Faker;
 import com.opencsv.CSVWriter;
 
-import javafx.concurrent.Task;
 import nl.mierasmade.values.FakerValue;
 
 @Component
-public class DataWriter extends Task<Integer> {
+public class DataWriter {
 	
 	private Locale language;
 	private char delimiter;
@@ -37,27 +37,19 @@ public class DataWriter extends Task<Integer> {
 	private List<FakerValue> columns;
 	private File file;
 	
-	@Override
-	protected Integer call() throws Exception {		
-		Faker faker = new Faker(language);
+	public void write() {
+		Faker faker = new Faker(language);	
 		
-		int totalPercentage = 0;
-		int percentageIndex = (count / 1000);
-		
-		CSVWriter writer = new CSVWriter(new FileWriter(file), delimiter);
-		int currentIndex = 0;
-		for (int i = 0; i < count; i++) {
-			String[] fakeValues = getFakeValues(columns, faker);			
-			writer.writeNext(fakeValues);
-			currentIndex++;
-			if (currentIndex == percentageIndex) {
-				totalPercentage++;
-				updateProgress(totalPercentage, 1000);					
-				currentIndex = 0;
+		try {
+			CSVWriter writer = new CSVWriter(new FileWriter(file), delimiter);
+			for (int i = 0; i < count; i++) {
+				String[] fakeValues = getFakeValues(columns, faker);			
+				writer.writeNext(fakeValues);			
 			}
-		}
-		writer.close();			
-		return null;
+			writer.close();				
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}		
 	}	
 
 	private String[] getFakeValues(List<FakerValue> columns, Faker faker) {
@@ -67,16 +59,6 @@ public class DataWriter extends Task<Integer> {
 			fakeValues[j] = columns.get(j).getValue();
 		}
 		return fakeValues;
-	}	
-
-	@Override
-	protected void updateProgress(double workDone, double max) {
-		super.updateProgress(workDone, max);
-	}	
-
-	@Override
-	protected void updateMessage(String message) {		
-		super.updateMessage(message);
 	}
 
 	public void setLanguage(Locale language) {
