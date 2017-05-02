@@ -79,8 +79,7 @@
                   </children>
                </VBox>
                <Label fx:id="statusLabel" layoutX="336.0" layoutY="745.0" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="336.0" />
-               <Label fx:id="statusLabel" layoutX="221.0" layoutY="732.0" prefHeight="17.0" prefWidth="300.0" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="160.0" />
-               <ProgressBar fx:id="progressBar" layoutX="221.0" layoutY="751.0" prefHeight="18.0" prefWidth="300.0" progress="0.0" visible="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="160.0" />               
+               <ProgressBar fx:id="progressBar" layoutX="221.0" layoutY="751.0" prefHeight="18.0" prefWidth="300.0" progress="0.0" visible="false" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="160.0" />
             </children>
          </AnchorPane>
       </center>		

@@ -15,6 +15,7 @@
  ******************************************************************************/
 package nl.mierasmade;
 
+import nl.mierasmade.fakers.FakersConfiguration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,6 @@ import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nl.mierasmade.fakers.Fakers;
 import nl.mierasmade.main.MainController;
 import nl.mierasmade.writer.DataWriter;
 
@@ -39,7 +39,7 @@ public class GuiApplicationTest extends ApplicationTest {
 
 	private ViewFlowContext applicationContext;
 	@Autowired
-	private Fakers fakers;
+	private FakersConfiguration fakersConfiguration;
 	@Autowired
 	private DataWriter dataWriter;	
 
@@ -50,7 +50,7 @@ public class GuiApplicationTest extends ApplicationTest {
 		
 		applicationContext = new ViewFlowContext();					
 		applicationContext.register("primaryStage", primaryStage);		
-		applicationContext.register("fakers", fakers);		
+		applicationContext.register("fakersConfiguration", fakersConfiguration);
 		applicationContext.register("dataWriter", dataWriter);		
 		flow.createHandler(applicationContext).start(container);
 		

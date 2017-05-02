@@ -22,7 +22,7 @@ import com.github.javafaker.Faker;
 @Component
 public class State implements FakerValue {
 
-private static final String NAME = "State";
+	private static final String NAME = "State";
 	
 	private Faker faker;
 

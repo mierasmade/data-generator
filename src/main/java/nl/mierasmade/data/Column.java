@@ -24,8 +24,8 @@ import nl.mierasmade.values.FakerValue;
 
 public class Column extends RecursiveTreeObject<Column> {
 
-	private SimpleStringProperty columnName;
-	private SimpleObjectProperty<FakerValue> fakeType;
+	private final SimpleStringProperty columnName;
+	private final SimpleObjectProperty<FakerValue> fakeType;
 	
 	public Column(String columnName, FakerValue fakeType) {
 		this.columnName = new SimpleStringProperty(columnName);

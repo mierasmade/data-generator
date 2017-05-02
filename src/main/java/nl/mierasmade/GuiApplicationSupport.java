@@ -38,7 +38,7 @@ public abstract class GuiApplicationSupport extends Application {
 		applicationContext.close();
 	}
 
-	protected static void launchApp(Class<? extends GuiApplicationSupport> appClass, String[] args) {
+	static void launchApp(Class<? extends GuiApplicationSupport> appClass, String[] args) {
 		GuiApplicationSupport.savedArgs = args;
 		Application.launch(appClass, args);
 	}

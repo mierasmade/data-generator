@@ -30,7 +30,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javafx.embed.swing.JFXPanel;
-import nl.mierasmade.fakers.Fakers;
+import nl.mierasmade.fakers.FakersConfiguration;
 import nl.mierasmade.values.FakerValue;
 
 @RunWith(SpringRunner.class)
@@ -43,7 +43,7 @@ public class DataWriterTest {
 	@Autowired
 	private DataWriter dataWriter;
 	@Autowired
-	private Fakers fakers;
+	private FakersConfiguration fakersConfiguration;
 	
 	@Before
 	public void setUp() {
@@ -55,10 +55,8 @@ public class DataWriterTest {
 		dataWriter.setLanguage(Locale.GERMAN);
 		dataWriter.setDelimiter(';');
 		dataWriter.setCount(1000);			
-		List<FakerValue> columns = new ArrayList<FakerValue>();
-		for (FakerValue fakerValue : fakers.getFakerValues()) {
-			columns.add(fakerValue);
-		}
+		List<FakerValue> columns = new ArrayList<>();
+		columns.addAll(fakersConfiguration.getFakerValues());
 		dataWriter.setColumns(columns);
 		dataWriter.setFile(new File(ACTUAL_ADDRESS_FILE));	
 		

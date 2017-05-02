@@ -21,7 +21,7 @@ import com.github.javafaker.Faker;
 @Component
 public class BuildingNumber implements FakerValue {
 
-private static final String NAME = "Building Number";
+	private static final String NAME = "Building Number";
 	
 	private Faker faker;
 

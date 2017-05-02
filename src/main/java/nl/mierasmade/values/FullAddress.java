@@ -21,7 +21,7 @@ import com.github.javafaker.Faker;
 @Component
 public class FullAddress implements FakerValue {
 
-private static final String NAME = "Full Address";
+	private static final String NAME = "Full Address";
 	
 	private Faker faker;
 

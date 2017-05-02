@@ -21,7 +21,7 @@ import com.github.javafaker.Faker;
 @Component
 public class SecondaryAddress implements FakerValue {
 
-private static final String NAME = "Secondary Address";
+	private static final String NAME = "Secondary Address";
 	
 	private Faker faker;
 

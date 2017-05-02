@@ -15,6 +15,7 @@
  ******************************************************************************/
 package nl.mierasmade;
 
+import nl.mierasmade.fakers.FakersConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Lazy;
@@ -27,7 +28,6 @@ import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import nl.mierasmade.fakers.Fakers;
 import nl.mierasmade.main.MainController;
 import nl.mierasmade.writer.DataWriter;
 
@@ -39,7 +39,7 @@ public class GuiApplication extends GuiApplicationSupport {
 	@FXMLViewFlowContext 
 	private ViewFlowContext applicationContext;
 	@Autowired
-	private Fakers fakers;
+	private FakersConfiguration fakersConfiguration;
 	@Autowired
 	private DataWriter dataWriter;
 	
@@ -54,7 +54,7 @@ public class GuiApplication extends GuiApplicationSupport {
 		
 		applicationContext = new ViewFlowContext();					
 		applicationContext.register("primaryStage", primaryStage);		
-		applicationContext.register("fakers", fakers);		
+		applicationContext.register("fakersConfiguration", fakersConfiguration);
 		applicationContext.register("dataWriter", dataWriter);		
 		flow.createHandler(applicationContext).start(container);
 		

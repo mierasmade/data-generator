@@ -21,7 +21,7 @@ import com.github.javafaker.Faker;
 @Component
 public class ZipCode implements FakerValue {
 
-private static final String NAME = "Zip Code";
+	private static final String NAME = "Zip Code";
 	
 	private Faker faker;
 

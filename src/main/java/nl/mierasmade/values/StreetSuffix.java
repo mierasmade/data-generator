@@ -21,7 +21,7 @@ import com.github.javafaker.Faker;
 @Component
 public class StreetSuffix implements FakerValue {
 
-private static final String NAME = "Street Suffix";
+	private static final String NAME = "Street Suffix";
 	
 	private Faker faker;
 

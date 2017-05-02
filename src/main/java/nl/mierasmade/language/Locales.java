@@ -63,7 +63,7 @@ public enum Locales {
 	ZH_CN("zh-CN"),
 	ZH_TW("zh-TW");
 	
-	private String locale;
+	private final String locale;
 	
 	Locales(String locale) {
 		this.locale = locale;

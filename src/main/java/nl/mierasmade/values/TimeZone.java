@@ -21,7 +21,7 @@ import com.github.javafaker.Faker;
 @Component
 public class TimeZone implements FakerValue {
 
-private static final String NAME = "TimeZone";
+	private static final String NAME = "TimeZone";
 	
 	private Faker faker;
 

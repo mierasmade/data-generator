@@ -15,13 +15,6 @@
  ******************************************************************************/
 package nl.mierasmade.main;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import javax.annotation.PostConstruct;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
@@ -32,30 +25,29 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
-
 import io.datafx.controller.FXMLController;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
 import io.datafx.controller.flow.context.ViewFlowContext;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.binding.IntegerBinding;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableColumn.CellDataFeatures;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
+import javax.annotation.PostConstruct;
 import nl.mierasmade.data.Column;
-import nl.mierasmade.fakers.Fakers;
+import nl.mierasmade.fakers.FakersConfiguration;
 import nl.mierasmade.language.Locales;
 import nl.mierasmade.values.FakerValue;
 import nl.mierasmade.writer.DataWriter;
@@ -83,9 +75,9 @@ public class MainController {
     @FXML private Label statusLabel;   
     @FXML private ProgressBar progressBar;
     
-    private ObservableList<Column> columns = FXCollections.observableArrayList();
+    private final ObservableList<Column> columns = FXCollections.observableArrayList();
     
-    private Fakers fakers;
+    private FakersConfiguration fakersConfiguration;
     private DataWriter dataWriter;
     private Stage primaryStage;
     
@@ -104,7 +96,7 @@ public class MainController {
 	}
 	
 	private void setupInjection() {
-		fakers = (Fakers) context.getRegisteredObject("fakers");		
+		fakersConfiguration = (FakersConfiguration) context.getRegisteredObject("fakersConfiguration");
 		dataWriter = (DataWriter) context.getRegisteredObject("dataWriter");		
 		primaryStage = (Stage) context.getRegisteredObject("primaryStage");			
 	}
@@ -114,23 +106,15 @@ public class MainController {
 		columnName.prefWidthProperty().bind(fakeColumnsView.widthProperty().divide(2)); 
 		fakeType.prefWidthProperty().bind(fakeColumnsView.widthProperty().divide(2));
 		
-		columnName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Column,String>, ObservableValue<String>>() {			
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<Column, String> param) {
-				return param.getValue().getValue().getColumnName();
-			}
-		});		
+		columnName.setCellValueFactory(param -> param.getValue().getValue().getColumnName());
 		
-		fakeType.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Column,String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<Column, String> param) {
-				FakerValue fakeValue = param.getValue().getValue().getFakeType().get();
-				return new SimpleStringProperty(fakeValue.toString());
-			}
-		});	
+		fakeType.setCellValueFactory(param -> {
+			FakerValue fakeValue = param.getValue().getValue().getFakeType().get();
+			return new SimpleStringProperty(fakeValue.toString());
+		});
 		
 		
-		final TreeItem<Column> root = new RecursiveTreeItem<Column>(columns, RecursiveTreeObject::getChildren);	
+		final TreeItem<Column> root = new RecursiveTreeItem<>(columns, RecursiveTreeObject::getChildren);
 		fakeColumnsView.setRoot(root);
 		fakeColumnsView.setShowRoot(false);		
 	}
@@ -158,11 +142,9 @@ public class MainController {
 		linesTextField.focusedProperty().addListener((observable, oldValue, newValue) -> {if(!newValue) linesTextField.validate();});		
 	}
 
-	private void setupChoiceBox() {		
-		fakers.getFakerValues().forEach(f -> {
-			typeDataInputBox.getItems().add(f);
-		});
-		
+	private void setupChoiceBox() {
+		fakersConfiguration.getFakerValues().forEach(f -> typeDataInputBox.getItems().add(f));
+
 		for (Locales locale : Locales.values()) {
 			languageChoiceBox.getItems().add(locale);
 		}
@@ -211,9 +193,7 @@ public class MainController {
 			File file = fileChooser.showSaveDialog(primaryStage);
 			
 			List<FakerValue> localColumns = new ArrayList<>();
-			columns.forEach(c -> {
-				localColumns.add(c.getFakeType().get());
-			});
+			columns.forEach(c -> localColumns.add(c.getFakeType().get()));
 			
 			// Swallow this for now
 			if (file == null) {
