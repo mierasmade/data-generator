@@ -18,6 +18,7 @@ package nl.mierasmade.fakers;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.annotation.PostConstruct;
+import nl.mierasmade.values.ASINCode;
 import nl.mierasmade.values.AddressFirstName;
 import nl.mierasmade.values.AddressLastName;
 import nl.mierasmade.values.AncientGod;
@@ -28,15 +29,42 @@ import nl.mierasmade.values.AppAuthor;
 import nl.mierasmade.values.AppName;
 import nl.mierasmade.values.AppVersion;
 import nl.mierasmade.values.ArtistName;
+import nl.mierasmade.values.BeerHop;
+import nl.mierasmade.values.BeerMalt;
+import nl.mierasmade.values.BeerName;
+import nl.mierasmade.values.BeerStyle;
+import nl.mierasmade.values.BeerYeast;
+import nl.mierasmade.values.BookAuthor;
+import nl.mierasmade.values.BookGenre;
+import nl.mierasmade.values.BookPublisher;
+import nl.mierasmade.values.BookTitle;
+import nl.mierasmade.values.Boolean;
 import nl.mierasmade.values.BuildingNumber;
+import nl.mierasmade.values.CatBreed;
+import nl.mierasmade.values.CatName;
+import nl.mierasmade.values.CatRegistry;
+import nl.mierasmade.values.ChuckNorrisFact;
 import nl.mierasmade.values.City;
 import nl.mierasmade.values.CityName;
 import nl.mierasmade.values.CityPrefix;
 import nl.mierasmade.values.CitySuffix;
 import nl.mierasmade.values.Country;
 import nl.mierasmade.values.CountryCode;
+import nl.mierasmade.values.CreditCardExpirty;
+import nl.mierasmade.values.CreditCardNumber;
+import nl.mierasmade.values.CreditCardType;
+import nl.mierasmade.values.EAN13Code;
+import nl.mierasmade.values.EAN8Code;
 import nl.mierasmade.values.FakerValue;
 import nl.mierasmade.values.FullAddress;
+import nl.mierasmade.values.GTIN13Code;
+import nl.mierasmade.values.GTIN8Code;
+import nl.mierasmade.values.IMEICode;
+import nl.mierasmade.values.ISBN10Code;
+import nl.mierasmade.values.ISBN13Code;
+import nl.mierasmade.values.ISBNGroupCode;
+import nl.mierasmade.values.ISBNGs1Code;
+import nl.mierasmade.values.ISBNRegistrantCode;
 import nl.mierasmade.values.Latitude;
 import nl.mierasmade.values.Longitude;
 import nl.mierasmade.values.SecondaryAddress;
@@ -76,7 +104,43 @@ public class FakersConfiguration {
 	@Autowired
 	private ArtistName artistName;
 	@Autowired
+	private ASINCode asinCode;
+	@Autowired
 	private BuildingNumber buildingNumber;
+	@Autowired
+	private BeerHop beerHop;
+	@Autowired
+	private BeerMalt beerMalt;
+	@Autowired
+	private BeerName beerName;
+	@Autowired
+	private BeerStyle beerStyle;
+	@Autowired
+	private BeerYeast beerYeast;
+	@Autowired
+	private BookAuthor bookAuthor;
+	@Autowired
+	private BookGenre bookGenre;
+	@Autowired
+	private BookPublisher bookPublisher;
+	@Autowired
+	private BookTitle bookTitle;
+	@Autowired
+	private Boolean bool;
+	@Autowired
+	private CreditCardExpirty creditCardExpirty;
+	@Autowired
+	private CreditCardNumber creditCardNumber;
+	@Autowired
+	private CreditCardType creditCardType;
+	@Autowired
+	private CatBreed catBreed;
+	@Autowired
+	private CatName catName;
+	@Autowired
+	private CatRegistry catRegistry;
+	@Autowired
+	private ChuckNorrisFact chuckNorrisFact;
 	@Autowired
 	private City city;
 	@Autowired
@@ -90,7 +154,27 @@ public class FakersConfiguration {
 	@Autowired
 	private CountryCode countryCode;
 	@Autowired
+	private EAN8Code ean8Code;
+	@Autowired
+	private EAN13Code ean13Code;
+	@Autowired
 	private FullAddress fullAddress;
+	@Autowired
+	private GTIN8Code gtin8Code;
+	@Autowired
+	private GTIN13Code gtin13Code;
+	@Autowired
+	private IMEICode imeiCode;
+	@Autowired
+	private ISBN10Code isbn10Code;
+	@Autowired
+	private ISBN13Code isbn13Code;
+	@Autowired
+	private ISBNGroupCode isbnGroupCode;
+	@Autowired
+	private ISBNGs1Code isbnGs1Code;
+	@Autowired
+	private ISBNRegistrantCode isbnRegistrantCode;
 	@Autowired
 	private Latitude latitude;
 	@Autowired
@@ -117,9 +201,11 @@ public class FakersConfiguration {
 	private ZipCode zipCode;
 	
 	private final Set<FakerValue> fakerValues = new TreeSet<>();
-	
+
+	//TODO: use reflection to load all fields into the fakerValues list
+	//  FieldUtils.getFieldsListWithAnnotation(...)
 	@PostConstruct
-	private void initFakervalues() {
+	private void addFakerValues() {
 		fakerValues.add(addressFirstName);
 		fakerValues.add(addressLastName);
 		fakerValues.add(ancientGod);
@@ -130,7 +216,27 @@ public class FakersConfiguration {
 		fakerValues.add(appName);
 		fakerValues.add(appVersion);
 		fakerValues.add(artistName);
+		fakerValues.add(asinCode);
 		fakerValues.add(buildingNumber);
+		fakerValues.add(beerHop);
+		fakerValues.add(beerMalt);
+		fakerValues.add(beerName);
+		fakerValues.add(beerStyle);
+		fakerValues.add(beerYeast);
+		fakerValues.add(bookAuthor);
+		fakerValues.add(bookGenre);
+		fakerValues.add(bookPublisher);
+		fakerValues.add(bookTitle);
+		fakerValues.add(bool);
+		fakerValues.add(catBreed);
+		fakerValues.add(catName);
+		fakerValues.add(catRegistry);
+		fakerValues.add(chuckNorrisFact);
+		fakerValues.add(creditCardExpirty);
+		fakerValues.add(creditCardNumber);
+		fakerValues.add(creditCardType);
+		fakerValues.add(ean8Code);
+		fakerValues.add(ean13Code);
 		fakerValues.add(city);
 		fakerValues.add(cityName);
 		fakerValues.add(cityPrefix);
@@ -138,6 +244,14 @@ public class FakersConfiguration {
 		fakerValues.add(country);
 		fakerValues.add(countryCode);
 		fakerValues.add(fullAddress);
+		fakerValues.add(gtin8Code);
+		fakerValues.add(gtin13Code);
+		fakerValues.add(imeiCode);
+		fakerValues.add(isbn10Code);
+		fakerValues.add(isbn13Code);
+		fakerValues.add(isbnGroupCode);
+		fakerValues.add(isbnGs1Code);
+		fakerValues.add(isbnRegistrantCode);
 		fakerValues.add(latitude);
 		fakerValues.add(longitude);
 		fakerValues.add(secondaryAddress);
@@ -149,7 +263,7 @@ public class FakersConfiguration {
 		fakerValues.add(streetPrefix);
 		fakerValues.add(streetSuffix);
 		fakerValues.add(timeZone);
-		fakerValues.add(zipCode);		
+		fakerValues.add(zipCode);
 	}
 
 	public Set<FakerValue> getFakerValues() {
