@@ -48,6 +48,7 @@ import nl.mierasmade.values.City;
 import nl.mierasmade.values.CityName;
 import nl.mierasmade.values.CityPrefix;
 import nl.mierasmade.values.CitySuffix;
+import nl.mierasmade.values.Color;
 import nl.mierasmade.values.Country;
 import nl.mierasmade.values.CountryCode;
 import nl.mierasmade.values.CreditCardExpirty;
@@ -154,6 +155,8 @@ public class FakersConfiguration {
 	@Autowired
 	private CountryCode countryCode;
 	@Autowired
+	private Color color;
+	@Autowired
 	private EAN8Code ean8Code;
 	@Autowired
 	private EAN13Code ean13Code;
@@ -243,6 +246,7 @@ public class FakersConfiguration {
 		fakerValues.add(citySuffix);
 		fakerValues.add(country);
 		fakerValues.add(countryCode);
+		fakerValues.add(color);
 		fakerValues.add(fullAddress);
 		fakerValues.add(gtin8Code);
 		fakerValues.add(gtin13Code);
